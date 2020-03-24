@@ -12,20 +12,22 @@ class CountryStatPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                child: Scrollbar(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Scrollbar(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: ListView.builder(
-                      itemBuilder: (context, index) => CountryItem(
-                            countries[index],
-                          )),
+                    itemBuilder: (context, index) => CountryItem(
+                      countries[index],
+                    ),
+                    itemCount: countries.length,
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

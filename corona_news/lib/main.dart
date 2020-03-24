@@ -1,4 +1,5 @@
 import 'package:corona_news/blocs/covid_bloc/covid_bloc.dart';
+import 'package:corona_news/blocs/covid_bloc/covid_event.dart';
 import 'package:corona_news/data/data_providers/country_data_provider.dart';
 import 'package:corona_news/data/data_providers/global_statistics_data_provider.dart';
 import 'package:corona_news/data/repositories/covid_repository.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
           create: (_) =>
-              CovidBloc(RepositoryProvider.of<CovidRepository>(context)),
+              CovidBloc(RepositoryProvider.of<CovidRepository>(context))
+                ..add(AppStarted()),
           child: HomePage()),
     );
   }

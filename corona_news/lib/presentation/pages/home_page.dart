@@ -1,5 +1,4 @@
 import 'package:corona_news/blocs/covid_bloc/covid_bloc.dart';
-import 'package:corona_news/blocs/covid_bloc/covid_event.dart';
 import 'package:corona_news/blocs/covid_bloc/covid_state.dart';
 import 'package:corona_news/presentation/pages/country_stat_page.dart';
 import 'package:corona_news/presentation/pages/info_page.dart';
@@ -13,8 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    context.bloc<CovidBloc>().add(AppStarted());
-
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.white,
@@ -39,11 +36,14 @@ class HomePage extends StatelessWidget {
               return Container();
             }
 
-            CovidLoadSuccess successState = covidState as CovidLoadSuccess;
-            return _buildSuccessWidget(
-              context,
-              successState,
-            );
+            if (covidState is CovidLoadSuccess) {
+              return _buildSuccessWidget(
+                context,
+                covidState,
+              );
+            }
+
+            return Container();
           },
         ),
       ),

@@ -10,12 +10,12 @@ abstract class CovidState extends Equatable {
 
 class CovidInitial extends CovidState {
   @override
-  List<Object> get props => null;
+  List<Object> get props => [];
 }
 
 class CovidInProgress extends CovidState {
   @override
-  List<Object> get props => null;
+  List<Object> get props => [];
 }
 
 class CovidLoadFailure extends CovidState {
