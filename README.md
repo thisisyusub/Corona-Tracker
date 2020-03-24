@@ -1,7 +1,7 @@
 # Coronavirus-App
 
 ## Simple app that gives stats of Coronavirus in Azerbaijan and other countries. 
-## Download app from this [link](https://drive.google.com/file/d/1J4uhOwNdyZV8Jc2RS1LR86wnsbzRKm5L/view?usp=sharing).
+### You can download app from this [link](https://drive.google.com/file/d/1J4uhOwNdyZV8Jc2RS1LR86wnsbzRKm5L/view?usp=sharing).
 
 ![](video.gif)
 
