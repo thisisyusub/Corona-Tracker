@@ -12,11 +12,11 @@ class CountryStatPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+              Expanded(
                 child: Scrollbar(
                   child: ListView.builder(
                       itemBuilder: (context, index) => CountryItem(
@@ -24,8 +24,8 @@ class CountryStatPage extends StatelessWidget {
                           )),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
