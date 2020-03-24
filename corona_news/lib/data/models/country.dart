@@ -17,12 +17,13 @@ class Country {
 
   factory Country.fromJson(Map<String, dynamic> json) {
     return Country(
-        name: json['country'],
-        newCases: json['new_cases'],
-        newDeaths: json['new_deaths'],
-        totalCases: json['total_cases'],
-        totalDeaths: json['total_deaths'],
-        totalRecovered: json['total_recovered']);
+      name: json['country'],
+      newCases: json['new_cases'],
+      newDeaths: json['new_deaths'],
+      totalCases: json['total_cases'],
+      totalDeaths: json['total_deaths'],
+      totalRecovered: json['total_recovered'],
+    );
   }
 
   @override

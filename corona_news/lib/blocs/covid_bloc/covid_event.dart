@@ -8,8 +8,3 @@ class AppStarted extends CovidEvent {
   @override
   List<Object> get props => null;
 }
-
-class CountryPageOpened extends CovidEvent {
-  @override
-  List<Object> get props => null;
-}

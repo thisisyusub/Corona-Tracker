@@ -31,7 +31,7 @@ class CustomProgressIndicator extends StatelessWidget {
       padding: EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
-          _rowItem(firstTitle, firstValue),
+          _rowItem(firstTitle, firstValue, firstPercentage),
           SizedBox(height: 15),
           LinearProgressIndicator(
             backgroundColor: Colors.grey[300],
@@ -39,7 +39,7 @@ class CustomProgressIndicator extends StatelessWidget {
             value: firstPercentage,
           ),
           SizedBox(height: 20),
-          _rowItem(secondTitle, secondValue),
+          _rowItem(secondTitle, secondValue, secondPercentage),
           SizedBox(height: 15),
           LinearProgressIndicator(
             backgroundColor: Colors.grey[300],
@@ -51,7 +51,7 @@ class CustomProgressIndicator extends StatelessWidget {
     );
   }
 
-  Widget _rowItem(String title, String value) {
+  Widget _rowItem(String title, String value, double percentage) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -59,14 +59,14 @@ class CustomProgressIndicator extends StatelessWidget {
         RichText(
           text: TextSpan(children: [
             TextSpan(
-              text: value,
+              text: value.replaceAll(',', ''),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black54,
               ),
             ),
             TextSpan(
-              text: ' (95%)',
+              text: ' (${(percentage * 100).toStringAsFixed(0)}%)',
               style: TextStyle(
                 color: Colors.black54,
               ),

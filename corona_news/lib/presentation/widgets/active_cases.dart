@@ -49,7 +49,7 @@ class CustomCases extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  value,
+                  value.replaceAll(',', ''),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),

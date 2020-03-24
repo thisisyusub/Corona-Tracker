@@ -1,12 +1,11 @@
 import 'package:corona_news/blocs/covid_bloc/covid_bloc.dart';
 import 'package:corona_news/blocs/covid_bloc/covid_event.dart';
 import 'package:corona_news/blocs/covid_bloc/covid_state.dart';
-import 'package:corona_news/data/models/country.dart';
 import 'package:corona_news/presentation/pages/country_stat_page.dart';
 import 'package:corona_news/presentation/pages/info_page.dart';
 import 'package:corona_news/presentation/widgets/active_cases.dart';
 import 'package:corona_news/presentation/widgets/country_item.dart';
-import 'package:corona_news/presentation/widgets/world_rate.dart';
+import 'package:corona_news/presentation/widgets/world_rate_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,15 +35,25 @@ class HomePage extends StatelessWidget {
               return Center(child: Text(covidState.message));
             }
 
+            if (covidState is CovidInitial) {
+              return Container();
+            }
+
             CovidLoadSuccess successState = covidState as CovidLoadSuccess;
-            return _buildSuccessWidget(context, successState.azerbaijanData);
+            return _buildSuccessWidget(
+              context,
+              successState,
+            );
           },
         ),
       ),
     );
   }
 
-  Widget _buildSuccessWidget(BuildContext context, Country country) {
+  Widget _buildSuccessWidget(
+    BuildContext context,
+    CovidLoadSuccess covidState,
+  ) {
     return SafeArea(
       child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -64,7 +73,7 @@ class HomePage extends StatelessWidget {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (_) => BlocProvider.value(
                             value: context.bloc<CovidBloc>(),
-                            child: CountryStatPage(),
+                            child: CountryStatPage(covidState.countries),
                           ),
                         ));
                       },
@@ -81,30 +90,21 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              CountryItem(
-                Country(
-                  name: 'Azərbaycan',
-                  totalCases: country.totalCases,
-                  newCases:
-                      country.newCases.isEmpty ? 'Yoxdur' : country.newCases,
-                  totalDeaths: country.totalDeaths,
-                  newDeaths:
-                      country.newDeaths.isEmpty ? 'Yoxdur' : country.newDeaths,
-                  totalRecovered: country.totalRecovered,
-                ),
-              ),
-              WorldRate(),
+              CountryItem(covidState.azerbaijanData),
+              WorldRateBar(covidState.worldRate),
               SizedBox(height: 10),
               CustomCases(
                 title: 'Aktiv hallar',
                 subtitle: 'Hal-hazırda yoluxmuş xəstələr',
-                value: '0',
+                value: covidState.activeCases.activeCases.toString(),
                 firstProgressTitle: 'Vəziyyəti mülayim',
                 secondProgressTitle: 'Vəziyyəti ağır',
-                firstProgressValue: '0',
-                secondProgressValue: '0',
-                firstProgressPercentage: 0,
-                secondProgressPercentage: 0,
+                firstProgressValue: covidState.activeCases.mildCases.toString(),
+                secondProgressValue:
+                    covidState.activeCases.criticalCases.toString(),
+                firstProgressPercentage: covidState.activeCases.mildPercentage,
+                secondProgressPercentage:
+                    covidState.activeCases.cricitalPercentage,
                 fistProgressColor: Colors.blueAccent,
                 secondProgressColor: Colors.orangeAccent,
               ),
@@ -114,13 +114,15 @@ class HomePage extends StatelessWidget {
               CustomCases(
                 title: 'Bağlı hallar',
                 subtitle: 'Nəticəsi məlum olan hallar',
-                value: '0',
+                value: covidState.closedCases.closedCases.toString(),
                 firstProgressTitle: 'Sağalma',
                 secondProgressTitle: 'Ölüm',
-                firstProgressValue: '0',
-                secondProgressValue: '0',
-                firstProgressPercentage: 0,
-                secondProgressPercentage: 0,
+                firstProgressValue: covidState.closedCases.recovered.toString(),
+                secondProgressValue: covidState.closedCases.deaths.toString(),
+                firstProgressPercentage:
+                    covidState.closedCases.recoveredPercentage,
+                secondProgressPercentage:
+                    covidState.closedCases.deathPercentage,
                 fistProgressColor: Colors.greenAccent,
                 secondProgressColor: Colors.redAccent,
               ),

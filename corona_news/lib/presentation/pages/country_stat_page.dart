@@ -1,49 +1,31 @@
-import 'package:corona_news/blocs/covid_bloc/covid_bloc.dart';
-import 'package:corona_news/blocs/covid_bloc/covid_state.dart';
+import 'package:corona_news/data/models/country.dart';
+import 'package:corona_news/presentation/widgets/country_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CountryStatPage extends StatelessWidget {
+  final List<Country> countries;
+
+  CountryStatPage(this.countries) : assert(countries != null);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: BlocBuilder<CovidBloc, CovidState>(
-          builder: (context, state) {
-            if (state is CovidInProgress) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-
-            if (state is CovidLoadFailure) {
-              return Center(
-                child: Text(state.message),
-              );
-            }
-
-            return Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Axtar',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Expanded(
+                child: Scrollbar(
+                  child: ListView.builder(
+                      itemBuilder: (context, index) => CountryItem(
+                            countries[index],
+                          )),
                 ),
-                Expanded(
-                  child: Scrollbar(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                    ),
-                  ),
-                ),
-              ],
-            );
-          },
+              ),
+            ),
+          ],
         ),
       ),
     );

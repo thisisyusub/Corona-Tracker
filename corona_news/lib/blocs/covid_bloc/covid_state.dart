@@ -1,4 +1,7 @@
+import 'package:corona_news/data/models/active_cases.dart';
+import 'package:corona_news/data/models/closed_cases.dart';
 import 'package:corona_news/data/models/country.dart';
+import 'package:corona_news/data/models/world_rate.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class CovidState extends Equatable {
@@ -25,10 +28,26 @@ class CovidLoadFailure extends CovidState {
 }
 
 class CovidLoadSuccess extends CovidState {
+  final List<Country> countries;
   final Country azerbaijanData;
+  final WorldRate worldRate;
+  final ActiveCases activeCases;
+  final ClosedCases closedCases;
 
-  CovidLoadSuccess(this.azerbaijanData);
+  CovidLoadSuccess(
+    this.countries,
+    this.azerbaijanData,
+    this.worldRate,
+    this.activeCases,
+    this.closedCases,
+  );
 
   @override
-  List<Object> get props => [azerbaijanData];
+  List<Object> get props => [
+        azerbaijanData,
+        worldRate,
+        activeCases,
+        closedCases,
+        countries,
+      ];
 }

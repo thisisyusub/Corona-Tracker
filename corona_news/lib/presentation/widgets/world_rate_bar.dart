@@ -1,7 +1,12 @@
+import 'package:corona_news/data/models/world_rate.dart';
 import 'package:corona_news/presentation/widgets/title_part.dart';
 import 'package:flutter/material.dart';
 
-class WorldRate extends StatelessWidget {
+class WorldRateBar extends StatelessWidget {
+  WorldRateBar(this.worldRate);
+
+  final WorldRate worldRate;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,9 +27,9 @@ class WorldRate extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                _rowItem('0', 'Yoluxma'),
-                _rowItem('0', 'Ölüm'),
-                _rowItem('0', 'Sağalma'),
+                _rowItem(worldRate.cases, 'Yoluxma'),
+                _rowItem(worldRate.deaths, 'Ölüm'),
+                _rowItem(worldRate.recovered, 'Sağalma'),
               ],
             ),
           ),
@@ -40,7 +45,7 @@ class WorldRate extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Text(
-            count,
+            count.replaceAll(',', ''),
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),

@@ -38,7 +38,8 @@ class CountryItem extends StatelessWidget {
                 Text.rich(
                   TextSpan(text: 'Yeni Xəstələr: ', children: [
                     TextSpan(
-                      text: '${country.newCases}',
+                      text:
+                          '${country.newCases.isEmpty ? 'Yoxdur' : country.newCases}',
                       style: TextStyle(
                         color: Colors.purple,
                       ),
@@ -55,7 +56,8 @@ class CountryItem extends StatelessWidget {
                 Text.rich(
                   TextSpan(text: 'Yeni Ölüm: ', children: [
                     TextSpan(
-                      text: '${country.newDeaths}',
+                      text:
+                          '${country.newDeaths.isEmpty ? 'Yoxdur' : country.newDeaths}',
                       style: TextStyle(
                         color: Colors.red,
                       ),
