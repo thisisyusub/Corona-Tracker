@@ -1,6 +1,6 @@
 # Corona Tracker
 
-**Show your support by giving a star or**
+**Show your support by giving a :star:**
 
 <a href="https://www.buymeacoffee.com/rO9salC" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-violet.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
 
