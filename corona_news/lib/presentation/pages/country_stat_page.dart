@@ -52,6 +52,9 @@ class CountryStatPage extends StatelessWidget {
 
 class CountrySearch extends SearchDelegate<String> {
   @override
+  String get searchFieldLabel => 'Axtar';
+
+  @override
   List<Widget> buildActions(BuildContext context) {
     // actions for app bar
     return [
@@ -62,6 +65,18 @@ class CountrySearch extends SearchDelegate<String> {
         },
       ),
     ];
+  }
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    return ThemeData(
+      primaryColor: Colors.deepPurple,
+      primaryColorBrightness: Brightness.dark,
+      textTheme: Theme.of(context).textTheme.apply(bodyColor: Colors.white),
+      inputDecorationTheme: InputDecorationTheme(
+          hintStyle:
+              Theme.of(context).textTheme.title.copyWith(color: Colors.white)),
+    );
   }
 
   @override
