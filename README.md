@@ -2,9 +2,7 @@
 
 **Show your support by giving a star or**
 
-<a href="https://www.buymeacoffee.com/rO9salC">
-  <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me a Coffee">
-</a>
+<a href="https://www.buymeacoffee.com/rO9salC" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-violet.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
 
 ## Simple app that gives stats of Coronavirus in Azerbaijan and other countries. 
 ### You can download app from this [link](https://drive.google.com/file/d/1u18HBUv2x0RAC-FVaCFwf7KpNiG_rOpu/view?usp=sharing).
