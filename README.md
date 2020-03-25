@@ -14,6 +14,7 @@ App includes:
 - Information about Coronavirus
 - Stats of Coronavirus in Azerbaijan
 - Stats of all countries
+- News of Azerbaijan Republic of Azerbaijan Cabinet of Ministers
 
 
 
