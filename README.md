@@ -1,7 +1,7 @@
-# Coronavirus-App
+# Corona Tracker
 
 ## Simple app that gives stats of Coronavirus in Azerbaijan and other countries. 
-### You can download app from this [link](https://drive.google.com/file/d/1WPMlxY0PGgrOCNk7lcPFvW-8aq5kNrFT/view?usp=sharing).
+### You can download app from this [link](https://drive.google.com/file/d/1u18HBUv2x0RAC-FVaCFwf7KpNiG_rOpu/view?usp=sharing).
 
 ![](video.gif)
 
