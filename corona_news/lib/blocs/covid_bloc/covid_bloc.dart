@@ -4,6 +4,7 @@ import 'package:corona_news/blocs/covid_bloc/covid_event.dart';
 import 'package:corona_news/blocs/covid_bloc/covid_state.dart';
 import 'package:corona_news/data/models/active_cases.dart';
 import 'package:corona_news/data/models/closed_cases.dart';
+import 'package:corona_news/data/models/country.dart';
 import 'package:corona_news/data/models/world_rate.dart';
 import 'package:corona_news/data/repositories/covid_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,8 @@ class CovidBloc extends Bloc<CovidEvent, CovidState> {
   CovidBloc(this.covidRepository) : assert(covidRepository != null);
 
   final CovidRepository covidRepository;
+
+  List<Country> get countries => covidRepository.countries;
 
   @override
   CovidState get initialState => CovidInitial();

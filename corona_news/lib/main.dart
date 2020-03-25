@@ -5,9 +5,18 @@ import 'package:corona_news/data/data_providers/global_statistics_data_provider.
 import 'package:corona_news/data/repositories/covid_repository.dart';
 import 'package:corona_news/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.purple[700], // status bar color
+    statusBarBrightness: Brightness.dark,
+    statusBarIconBrightness: Brightness.dark,
+  ));
+
   runApp(
     RepositoryProvider(
       create: (_) => CovidRepository(
@@ -20,17 +29,26 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
-      home: BlocProvider(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
           create: (_) =>
               CovidBloc(RepositoryProvider.of<CovidRepository>(context))
                 ..add(AppStarted()),
-          child: HomePage()),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: Colors.purple[700],
+          accentColor: Colors.purple[500],
+          primaryColorBrightness: Brightness.light,
+          scaffoldBackgroundColor: Colors.white,
+          splashColor: Colors.purple[200],
+        ),
+        home: HomePage(),
+      ),
     );
   }
 }
