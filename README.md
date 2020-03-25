@@ -19,4 +19,5 @@ App includes:
 
 <br/>
 <br/>
+
 The app is created based on [This API](https://github.com/Maharramoff/coronavirus-cases-worldwide).
