@@ -12,6 +12,7 @@ class CountryStatPage extends StatelessWidget {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         centerTitle: true,
+        brightness: Brightness.dark,
         title: Text(
           'Ölkələr',
           style: TextStyle(color: Colors.white),
@@ -22,14 +23,11 @@ class CountryStatPage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Scrollbar(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ListView.builder(
-                    itemBuilder: (context, index) => CountryItem(
-                      countries[index],
-                    ),
-                    itemCount: countries.length,
+                child: ListView.builder(
+                  itemBuilder: (context, index) => CountryItem(
+                    countries[index],
                   ),
+                  itemCount: countries.length,
                 ),
               ),
             ),

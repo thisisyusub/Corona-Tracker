@@ -12,7 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.purple[700], // status bar color
+    statusBarColor: Colors.deepPurple, // status bar color
     statusBarBrightness: Brightness.dark,
     statusBarIconBrightness: Brightness.dark,
   ));
@@ -41,11 +41,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          primaryColor: Colors.purple[700],
-          accentColor: Colors.purple[500],
+          primaryColor: Colors.deepPurple,
+          accentColor: Colors.deepPurple[500],
           primaryColorBrightness: Brightness.light,
           scaffoldBackgroundColor: Colors.white,
-          splashColor: Colors.purple[200],
+          splashColor: Colors.deepPurple[200],
         ),
         home: HomePage(),
       ),

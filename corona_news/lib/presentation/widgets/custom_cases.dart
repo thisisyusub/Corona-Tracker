@@ -32,6 +32,10 @@ class CustomCases extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 8,
+      ),
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.grey,

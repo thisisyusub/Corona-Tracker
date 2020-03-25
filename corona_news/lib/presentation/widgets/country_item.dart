@@ -10,8 +10,9 @@ class CountryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        bottom: 10,
+      margin: EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 8,
       ),
       width: double.infinity,
       decoration: BoxDecoration(
