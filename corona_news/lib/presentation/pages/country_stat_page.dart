@@ -17,7 +17,6 @@ class CountryStatPage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: <Widget>[

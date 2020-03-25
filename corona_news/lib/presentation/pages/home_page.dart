@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
     CovidLoadSuccess covidState,
   ) {
     return Scaffold(
-      drawer: CustomDrawer(),
+      drawer: const CustomDrawer(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         centerTitle: true,

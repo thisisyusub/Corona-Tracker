@@ -13,7 +13,7 @@ class CovidRepository {
   List<Country> _countries = [];
   Stat _globalStat;
 
-  List<Country> get countries => _countries;
+  List<Country> get countries => [..._countries];
   Stat get globalStat => _globalStat;
 
   Future getAllData() async {
