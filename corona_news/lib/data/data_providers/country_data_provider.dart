@@ -1,6 +1,7 @@
-import 'package:corona_news/data/data_providers/api_service.dart';
 import 'package:corona_news/data/models/country.dart';
 import 'dart:convert' show json;
+
+import 'package:corona_news/data/services/api_service.dart';
 
 class CountryDataProvider {
   Future<List<Country>> fetchCountryData() async {

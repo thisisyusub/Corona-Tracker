@@ -1,11 +1,11 @@
-import 'package:corona_news/data/models/article.dart';
+import 'package:corona_news/data/models/news.dart';
 import 'dart:convert' show json;
 
 import 'package:corona_news/data/services/api_service.dart';
 
-class ArticlesDataProvider {
-  Future<List<Article>> fetchArticleData() async {
-    final String url = 'https://covid-az.herokuapp.com/api/articles';
+class NewsDataProvider {
+  Future<List<News>> fetchNewsData() async {
+    final String url = 'https://covid-az.herokuapp.com/api/news';
 
     try {
       final result = await ApiService().client.get(url, headers: {
@@ -13,12 +13,13 @@ class ArticlesDataProvider {
       });
 
       if (result.statusCode == 200) {
-        List<Article> articles = [];
+        List<News> news = [];
         final convertedData = json.decode(result.body) as List<dynamic>;
 
-        convertedData.forEach((article) => articles.add(Article(article)));
+        convertedData
+            .forEach((currentNews) => news.add(News.fromJson(currentNews)));
 
-        return articles;
+        return news;
       }
     } catch (e) {
       print(e);

@@ -1,11 +1,9 @@
-import 'dart:convert';
-
 import 'package:corona_news/blocs/article_bloc/article_bloc.dart';
 import 'package:corona_news/blocs/article_bloc/article_state.dart';
+import 'package:corona_news/presentation/widgets/custom_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_html/flutter_html.dart';
 
 class ArticlePage extends StatelessWidget {
   @override
@@ -51,27 +49,13 @@ class ArticlePage extends StatelessWidget {
       child: Column(
         children: articlesLoadSuccessState.articles
             .map(
-              (article) => _infoExpansionTile(
-                article.article[0],
-                article.article[1],
+              (article) => CustomExpansionTile(
+                title: article.article[0],
+                body: article.article[1],
               ),
             )
             .toList(),
       ),
-    );
-  }
-
-  Widget _infoExpansionTile(String title, String content) {
-    return ExpansionTile(
-      title: Text(utf8.decode(title.runes.toList())),
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Html(
-            data: utf8.decode(content.runes.toList()),
-          ),
-        )
-      ],
     );
   }
 }

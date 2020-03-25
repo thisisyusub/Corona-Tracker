@@ -1,7 +1,11 @@
 import 'package:corona_news/blocs/article_bloc/article_bloc.dart';
 import 'package:corona_news/blocs/article_bloc/article_event.dart';
+import 'package:corona_news/blocs/news_bloc/news_bloc.dart';
+import 'package:corona_news/blocs/news_bloc/news_event.dart';
 import 'package:corona_news/data/data_providers/articles_data_provider.dart';
+import 'package:corona_news/data/data_providers/news_data_provider.dart';
 import 'package:corona_news/data/repositories/article_repository.dart';
+import 'package:corona_news/data/repositories/news_repository.dart';
 import 'package:corona_news/presentation/pages/article_page.dart';
 import 'package:corona_news/presentation/pages/country_stat_page.dart';
 import 'package:corona_news/presentation/pages/news_page.dart';
@@ -69,13 +73,30 @@ class CustomDrawer extends StatelessWidget {
           Divider(
             height: 0,
           ),
-          ListTile(
-            title: Text('Xəbərlər'),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => NewsPage()));
-            },
-            trailing: Icon(Icons.new_releases),
+          RepositoryProvider(
+            create: (_) => NewsRepository(new NewsDataProvider()),
+            child: Builder(
+              builder: (context) => BlocProvider(
+                create: (_) => NewsBloc(context.repository<NewsRepository>()),
+                child: Builder(
+                  builder: (context) => ListTile(
+                    title: Text('Xəbərlər'),
+                    onTap: () {
+                      context.bloc<NewsBloc>().add(NewsPageOpenClicked());
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => BlocProvider.value(
+                            value: context.bloc<NewsBloc>(),
+                            child: NewsPage(),
+                          ),
+                        ),
+                      );
+                    },
+                    trailing: Icon(Icons.new_releases),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),

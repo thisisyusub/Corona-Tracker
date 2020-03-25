@@ -1,6 +1,6 @@
-import 'package:corona_news/data/data_providers/api_service.dart';
 import 'dart:convert' show json;
 import 'package:corona_news/data/models/stat.dart';
+import 'package:corona_news/data/services/api_service.dart';
 
 class GlobalStatisticsDataProvider {
   Future<Stat> fetchGlobalStatisticsData() async {

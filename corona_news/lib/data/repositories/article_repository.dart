@@ -5,11 +5,11 @@ class ArticleRepository {
   ArticleRepository(this.articlesDataProvider)
       : assert(articlesDataProvider != null);
 
+  final ArticlesDataProvider articlesDataProvider;
+
   List<Article> _articles = [];
 
   List<Article> get articles => [..._articles];
-
-  final ArticlesDataProvider articlesDataProvider;
 
   Future getAllArticles() async {
     _articles = await articlesDataProvider.fetchArticleData();
