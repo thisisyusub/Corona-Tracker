@@ -17,5 +17,6 @@ App includes:
 - News of Azerbaijan Republic of Azerbaijan Cabinet of Ministers
 
 
-
+<br/>
+<br/>
 The app is created based on [This API](https://github.com/Maharramoff/coronavirus-cases-worldwide).
