@@ -2,7 +2,7 @@
 
 **Show your support by giving a star or**
 
-<a href="https://www.buymeacoffee.com/mhoz0yJ">
+<a href="https://www.buymeacoffee.com/rO9salC">
   <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me a Coffee">
 </a>
 
