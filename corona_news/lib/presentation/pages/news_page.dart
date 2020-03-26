@@ -1,4 +1,3 @@
-import 'package:corona_news/blocs/article_bloc/article_state.dart';
 import 'package:corona_news/blocs/news_bloc/news_bloc.dart';
 import 'package:corona_news/blocs/news_bloc/news_state.dart';
 import 'package:corona_news/presentation/widgets/custom_expansion_tile.dart';

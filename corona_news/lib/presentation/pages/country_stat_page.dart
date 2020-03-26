@@ -24,7 +24,7 @@ class CountryStatPage extends StatelessWidget {
             onPressed: () {
               showSearch(
                 context: context,
-                delegate: CountrySearch(),
+                delegate: CountrySearch(countries),
               );
             },
           ),
@@ -51,6 +51,10 @@ class CountryStatPage extends StatelessWidget {
 }
 
 class CountrySearch extends SearchDelegate<String> {
+  final List<Country> countries;
+
+  CountrySearch(this.countries) : assert(countries != null);
+
   @override
   String get searchFieldLabel => 'Axtar';
 
@@ -98,25 +102,56 @@ class CountrySearch extends SearchDelegate<String> {
   @override
   Widget buildResults(BuildContext context) {
     // show some result based on selection
-    return CountryItem(Country(
-      name: 'Test',
-      newCases: '0',
-      newDeaths: '0',
-      totalCases: '0',
-      totalDeaths: '0',
-      totalRecovered: '0',
-    ));
+    final resultCountries =
+        countries.where((country) => country.name.startsWith(query)).toList();
+
+    return resultCountries.isEmpty
+        ? Center(
+            child: Text('Heç bir ölkə tapılmadı :('),
+          )
+        : SingleChildScrollView(
+            child: Column(
+              children: resultCountries
+                  .map(
+                    (country) => CountryItem(country),
+                  )
+                  .toList(),
+            ),
+          );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // show when someone searches for something
+    // show suggestions when someone searches for something
+    final List<Country> suggestedCountries = query.isEmpty
+        ? countries
+        : countries.where((country) => country.name.startsWith(query)).toList();
+
     return ListView.builder(
       itemBuilder: (context, i) => ListTile(
-        onTap: () => showResults(context),
-        title: Text('$i test'),
+        onTap: () {
+          query = suggestedCountries[i].name;
+          showResults(context);
+        },
+        title: RichText(
+          text: TextSpan(
+              text: suggestedCountries[i].name.substring(0, query.length),
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+              children: [
+                TextSpan(
+                  text: suggestedCountries[i].name.substring(query.length),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ]),
+        ),
       ),
-      itemCount: 5,
+      itemCount: suggestedCountries.length,
     );
   }
 }
