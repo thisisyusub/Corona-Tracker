@@ -74,8 +74,10 @@ class CountrySearch extends SearchDelegate<String> {
       primaryColorBrightness: Brightness.dark,
       textTheme: Theme.of(context).textTheme.apply(bodyColor: Colors.white),
       inputDecorationTheme: InputDecorationTheme(
-          hintStyle:
-              Theme.of(context).textTheme.title.copyWith(color: Colors.white)),
+          hintStyle: Theme.of(context)
+              .textTheme
+              .headline6
+              .copyWith(color: Colors.white)),
     );
   }
 

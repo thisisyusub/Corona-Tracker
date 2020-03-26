@@ -35,6 +35,5 @@ class CustomExpansionTile extends StatelessWidget {
         )
       ],
     );
-    ;
   }
 }
